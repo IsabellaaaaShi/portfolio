@@ -1,3 +1,131 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fbf8f8;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+/* 
+Header
+*/
+
+/* Establish flex-box for header and navigation */
+header {
+    display: flex; 
+    flex-direction: row;
+    margin-bottom: 60px;
+}
+
+.headerTitle {
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+    font: 400 30px sans-serif;
+}
+
+/* Nav Bar ---------------- */
+nav {
+    display: flex; 
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: baseline;
+    font-size: 20px;
+    font-weight:500; 
+}
+
+nav a {
+    display: inline-block;
+    /* get rid of underline: https://www.w3schools.com/tags/tag_a.asp */
+    text-decoration: none;
+    /* adjust margin: https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top */
+    margin: 5px;
+    color:#000; 
+}
+
+.navCurrPage {
+    font-size: 20px;
+    /* bolder text: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */
+    font-weight: 800;
+    color: black;
+    text-decoration: underline 5px;
+}
+
+.navGap {
+    margin-right: 20px;
+}
+
+
+#aboutMe {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.aboutMeInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.aboutMePara {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.aboutMeContactLink {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.aboutMePhoto {
+    width: 600px; 
+    height: 600px; 
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.superScriptText {
+    font-size: 50px; 
+    font-weight: 500;
+    text-align: center;
+    /* text center: https://stackoverflow.com/questions/4801181/vertically-and-horizontally-centering-text-in-circle-in-css-like-iphone-notific */
+    line-height: 30px;
+    color: #FFA620;
+    width: 20px;
+    height: 30px; 
+
+}
+
+
+.headerText {
+    color: #1C19C2;
+    font-weight: 800;
+    font-size: 80px;
+    margin-top: -50px; 
+}
+
+.sectionTitle {
+    color: #1C19C2;
+    font-weight: 800;
+    font-size: 80px;
+}
+
+.resumePhoto {
+    width: 900px; 
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#contactInfo {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+/*------------------------------------------------------------*/
+
 
 .div {
     background-color: #fbf8f8;
@@ -20,12 +148,7 @@
     flex-wrap: wrap;
     }
 }
-.div-3 {
-    flex-grow: 1;
-    flex-basis: auto;
-    margin: auto 0;
-    font: 400 30px Anek Latin, sans-serif;
-}
+
 .div-4 {
     display: flex;
     flex-direction: column;
