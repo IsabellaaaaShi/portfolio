@@ -1,15 +1,32 @@
+/* Portfolio Style Guide
+
+---- COLOR DEFINITION ----
+Portfolio Blue: #1C19C2
+Portfolio Orange: #FFA620
+Portfolio Background: #FBF8F8
+
+---- FONT DEFINITION -----
+
+*/
+
+
+/*----------------------------------------------------------------------------------------
+GENERAL PAGE
+----------------------------------------------------------------------------------------*/
+
+/* Define a style for the main page including color, margins, fonts, etc. */
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #fbf8f8;
+    background-color: #FBF8F8;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 100px;
     margin-bottom: 100px;
 }
 
-/* 
-Header
-*/
+/*----------------------------------------------------------------------------------------
+HEADER
+----------------------------------------------------------------------------------------*/
 
 /* Establish flex-box for header and navigation */
 header {
@@ -18,6 +35,7 @@ header {
     margin-bottom: 60px;
 }
 
+/* Set style for page header (top left of page) */
 .headerTitle {
     flex-grow: 1;
     flex-basis: auto;
@@ -25,25 +43,31 @@ header {
     font: 400 30px sans-serif;
 }
 
-/* Nav Bar ---------------- */
+/*----------------------------------------------------------------------------------------
+NAVIGATION BAR
+----------------------------------------------------------------------------------------*/
+
+/* Set the font and establish flex-box of navigation bar */
 nav {
     display: flex; 
     flex-direction: row;
     justify-content: flex-end;
     align-items: baseline;
     font-size: 20px;
-    font-weight:500; 
+    font-weight: 500; 
 }
 
+/* Set each navigation link to remove underline, set text style */
 nav a {
     display: inline-block;
     /* get rid of underline: https://www.w3schools.com/tags/tag_a.asp */
     text-decoration: none;
     /* adjust margin: https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top */
     margin: 5px;
-    color:#000; 
+    color: black; 
 }
 
+/* Bold and underline the current navigation link selection */
 .navCurrPage {
     font-size: 20px;
     /* bolder text: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */
@@ -52,41 +76,52 @@ nav a {
     text-decoration: underline 5px;
 }
 
+/* Set spacing between navigation bar options */
 .navGap {
     margin-right: 20px;
 }
 
+/*----------------------------------------------------------------------------------------
+MAIN PAGE SECTIONS
+----------------------------------------------------------------------------------------*/
 
+/* Set the font, size, and color for main page section headers */
+.sectionTitle {
+    color: #1C19C2;
+    font-weight: 800;
+    font-size: 80px;
+}
+
+/*----------------------------------------------------------------------------------------
+ABOUT ME SECTION
+----------------------------------------------------------------------------------------*/
+
+/* Set flex-box for about me section (row: content, image) */
 #aboutMe {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
+/* Set sub flex-box for the first item of the #aboutMe flex-box: Title; Paragraph; Content Link */
 .aboutMeInfo {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.aboutMePara {
-    margin-top: 15px;
-    margin-bottom: 15px;
+/* Set style for about me section header text */
+.aboutMeText {
+    color: #1C19C2;
+    font-weight: 800;
+    font-size: 80px;
+    margin-top: -30px;
+    margin-left: 15px;
 }
 
-.aboutMeContactLink {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.aboutMePhoto {
-    width: 600px; 
-    height: 600px; 
-    margin-left: 50px;
-    margin-right: 50px;
-}
-
-.superScriptText {
+/* Set style for offset, super-script text included in the about me section header */
+#aboutMeSuperscript {
+    font-family: cursive;
     font-size: 50px; 
     font-weight: 500;
     text-align: center;
@@ -98,31 +133,81 @@ nav a {
 
 }
 
-
-.headerText {
-    color: #1C19C2;
-    font-weight: 800;
-    font-size: 80px;
-    margin-top: -50px; 
+/* Set style for about me paragraph text box */
+.aboutMePara {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    word-break: break-all;
 }
 
-.sectionTitle {
-    color: #1C19C2;
+/* Set style for about me section contact link button */
+.aboutMeContactLink {
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 18px; 
+    padding-bottom: 18px;
+    background-color: FBF8F8;
+    border: 1px solid black;
+    text-decoration: none;
+    border-radius: 20px;
+    align-self: center;
     font-weight: 800;
-    font-size: 80px;
 }
 
+
+/* Set Style for the about me section headshot photo */
+.aboutMePhoto {
+    width: 600px; 
+    height: 600px; 
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+/*----------------------------------------------------------------------------------------
+MY WORK SECTION
+----------------------------------------------------------------------------------------*/
+
+/* Set the flex-box for the work display selection types: row */
+.workDisplaySelect {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+/*----------------------------------------------------------------------------------------
+RESUME SECTION
+----------------------------------------------------------------------------------------*/
+
+/* Set the style for the resume image */
 .resumePhoto {
     width: 900px; 
     margin-left: 50px;
     margin-right: 50px;
 }
 
+/*----------------------------------------------------------------------------------------
+CONTACT SECTION
+----------------------------------------------------------------------------------------*/
+
+/* Establish a flex box for the contact info section as row: Title, Links */
 #contactInfo {
     display: flex;
     flex-direction: row;
-    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: baseline;
 }
+
+#contactInfo .sectionTitle {
+    margin-right: 100px;
+}
+
+.contactButtonContainer img {
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+}
+
 
 /*------------------------------------------------------------*/
 
