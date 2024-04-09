@@ -1,25 +1,40 @@
 // Define 
 const projects = {
 
-    "Project1": {
+    "project1": {
         "title": "Project 1 Title",
+        "simpleTitle": "project1",
+        "type": "arch",
+        "date": "2023",
+        "location": "Pittsburgh",
         "description": "Project 1 Description",
-        numContent: 3,
-        "imageFileDirectory": "./assets/Project1"
+        "numContent": 3,
+        "imageFileDirectory": "./assets/project1",
+        "projectIcon": "./assets/project1.png"
     },
 
-    "Project2": {
+    "project2": {
         "title": "Project 2 Title",
+        "simpleTitle": "project2",
+        "type": "arch",
+        "date": "2024",
+        "location": "New York",
         "description": "Project 2 Description",
-        numContent: 2,
-        "imageFileDirectory": "./assets/Project2"
+        "numContent": 2,
+        "imageFileDirectory": "./assets/project2",
+        "projectIcon": "./assets/project2.png"
     },
 
-    "Project3": {
+    "project3": {
         "title": "Project 3 Title",
+        "simpleTitle": "project3",
+        "type": "hci",
+        "date": "2019",
+        "location": "NA",
         "description": "Project 3 Description",
-        numContent: 10,
-        "imageFileDirectory": "./assets/Project3"
+        "numContent": 6,
+        "imageFileDirectory": "./assets/project3",
+        "projectIcon": "./assets/project3.png"
     },
  
 };
