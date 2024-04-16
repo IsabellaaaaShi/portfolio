@@ -1,0 +1,4 @@
+This project recreates the Flappy Bird Game with some twists. The game
+includes a bird that must navigate through pipes by flapping its wings to stay in the air, while avoiding collisions with the pipes and the ground. The game has a simple scoring system: the player earns points for passing through pipes.
+
+In addition to the classical Flappy Bird, I made a few extra features. Firstly, I made the game with my own aesthetics, which involved creating images and GIFs through drawing digitally and the use of Midjourney. Secondly, I created additional scoring, like coins, that users can exchange for new bird characters and themes. 

@@ -1,0 +1,6 @@
+The project is a collaboration within a team of four to design the physical and digital interfaces of an imaginary semiautonomous moped.
+
+
+The design of the moped involved an iterative process of research, task analysis, physical prototyping, and digital mockup at various fidelity levels to test design feasibility. 
+
+Enhanced consolidated human-centric design through multiple rounds of user interviews and testing
