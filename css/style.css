@@ -253,8 +253,50 @@ CONTENT
 
 /* Style for the project detail page images */
 .projectImageStyle {
-    height: 50px;
-    width: 50px;
-    border: black;
     margin: 10px;
+}
+
+#projectDetailImages {
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    max-width: 90%;
+}
+
+#projectDetailImages div {
+    background-color: orange;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+
+}
+
+#projectDetailImages div img{
+    background-color: violet;
+    margin: 5px;
+    border: 5px solid violet;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.projectImageFull {
+    border: 5px solid red;
+}
+
+.projectImageThird {
+    border: 5px solid green;
+}
+
+.projectImageSplit {
+    border: 5px solid blue;
+}
+
+#projectDetailImages div::after {
+    content: "";
+    flex-grow: 999;
 }

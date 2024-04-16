@@ -1,3 +1,6 @@
+/*----------------------------------------------------------------------------------------
+SELECTING "MY WORK" PROJECT ORGANIZATION
+----------------------------------------------------------------------------------------*/
 currentSortType = "type"; // Define default sorting and visualization
 
 // Function to handle a new sorting selection from the main page "My Work" section
@@ -86,3 +89,7 @@ function sortProjects(sortType) {
 
 // The default display is set in currentSortType (by project type) so display as this first
 sortProjects(currentSortType);
+
+/*----------------------------------------------------------------------------------------
+GENERAL PAGE
+----------------------------------------------------------------------------------------*/
