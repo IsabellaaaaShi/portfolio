@@ -102,6 +102,7 @@ function updateDetailPage(chosenProject) {
               genImage2.src = projects[chosenProject]["imageFileDirectory"] + "/" + projects[chosenProject]["projectImages"][nextIndex]; // Set the image source link
               genImage2.classList.add("projectImageStyle", "projectImageSplit"); // Add classes to the images, to assist in CSS styling
 
+
               splitImageDiv.appendChild(genImage1); // Add the first image to the image container
               splitImageDiv.appendChild(genImage2); // Add the second image to the image container
               projectImageContainer.appendChild(splitImageDiv); // Add the split image container to the page

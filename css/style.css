@@ -282,6 +282,7 @@ CONTENT
     border: 5px solid violet;
     object-fit: contain;
     overflow: hidden;
+    width: auto; 
 }
 
 .projectImageFull {
@@ -294,9 +295,4 @@ CONTENT
 
 .projectImageSplit {
     border: 5px solid blue;
-}
-
-#projectDetailImages div::after {
-    content: "";
-    flex-grow: 999;
 }

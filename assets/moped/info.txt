@@ -1,0 +1,10 @@
+The project is a collaboration within a team of four to design the physical and digital interfaces of an imaginary semiautonomous moped.
+
+
+The design of the moped involved an iterative process of research, task analysis, physical prototyping, and digital mockup at various fidelity levels to test design feasibility. 
+
+For the research phase, we conducted Guerrilla Research with people who owned mopeds to better understand what people liked/disliked/feared about moped and help us address any pain points. We also read secondary sources about four main aspects of mopeds: history, technical, user desirability, and use cases. During task analysis, we prioritized and sequentially diagramed 20 major actions and flows the users have to take in sequence to operate their EV moped. The goal was to understand each small steps users need to take in order to interact with the semi-autonomous moped. 
+
+For the iterative prototyping phase, the physical model was made through digital modeling and laser cutting. The dimensions were carefully decided based on human anatomy. The buttons and controlls were chosen based on human intuition and level of importance and access. The digital prototype went through a few fidelity phases: from paper sketches to mid-fidelity wireframes to high-fidelity mockup. 
+
+The videos below demonstrate the process of using the semi-autonomous moped. 

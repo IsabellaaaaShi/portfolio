@@ -60,8 +60,8 @@ const projects = {
             "project2_img_16_s.PNG",
             "project2_img_17_s.PNG",
             "project2_img_18_s.PNG",
-            "project2_img_19_s.PNG",
-            "project2_img_20_s.PNG",
+            "project2_img_19_s.jpg",
+            "project2_img_20_s.jpg",
             "project2_img_21_f.PNG"]
     },
 
