@@ -367,6 +367,7 @@ if (localStorage.getItem('selectedSection') != null) {
     console.log("EMPTY");
 }
 
+
 function retrieveFromLocalStorage() {
     const testString = localStorage.getItem('selectedSection');
     console.log(testString)
