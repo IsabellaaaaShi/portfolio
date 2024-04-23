@@ -127,13 +127,14 @@ function displayLocSort(dateSortedProjects) {
             year: currProject["date"],
             title: currProject["title"],
             image: currProject["projectIcon"],
-            lat: currProject["lat"],
-            lng: currProject["lng"],
+            lat: currProject["lat"]*1.001,
+            lng: currProject["lng"]*1.001,
             color: "orange",
             size: 7 + Math.random() * 30, 
             info: currProject["info"],
             simpleTitle: currProject["simpleTitle"],
-            type: currProject["type"]
+            type: currProject["type"],
+            location: currProject["location"]
         };
 
         console.log(loopObject);
@@ -142,8 +143,10 @@ function displayLocSort(dateSortedProjects) {
 
     console.log(convertedData);
 
-    const globeWidth = window.innerWidth*0.40;
-    const globeHeight = globeWidth
+    const globeWidth = window.innerWidth*0.60;
+    const globeHeight = window.innerWidth*0.40;
+
+    const markerSvg = `<svg viewBox="-4 0 36 36"><path fill="#1C19C2" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path><circle fill="#FBF8F8" cx="14" cy="14" r="7"></circle></svg>`;
 
     const world = Globe()
     .globeImageUrl('assets/globe.png') // Credit: NASA visibleearth.nasa.gov
@@ -167,29 +170,35 @@ function displayLocSort(dateSortedProjects) {
             projectImageLink.href="./projectDetail.html?project=" + project.simpleTitle; // Set the link that will be used to display project details
         }
 
-        // Create an image element that will be added to the project links
-        const projectElement = document.createElement('div');
-
         const projectDot = document.createElement('div');
         projectDot.classList.add("projectDot");
+        projectDot.innerHTML = markerSvg;
 
         const projectImage = document.createElement('img'); 
         projectImage.src = project.image; // Update image source based on link stored in object
         projectImage.alt= "Access " + project.title + " project clickable"; // Update alt text based on title stored in object
         projectImage.classList.add("projectListImageMap"); // Add a class to the image to assist with CSS styling
 
+        const projectTitle = document.createElement('p');
+        projectTitle.classList.add("projectListTitleMap");
+        projectTitle.innerHTML = project.title + "<br/><br/>" + convertDateToLegibleString(project.location);
+        //projectTitle.classList.add("timelineProjectItemsHoverTitle")
+        
         // projectListElement.appendChild(projectImageLink); // Add link to the project list HTML
         projectImageLink.appendChild(projectImage); // Add image to the project list HTML link
         projectImageLink.appendChild(projectDot);
+        projectImageLink.appendChild(projectTitle);
 
         // https://www.w3schools.com/js/js_htmldom_events.asp
         // https://www.w3schools.com/js/js_htmldom_eventlistener.asp
         projectImageLink.addEventListener('mouseover', () => {
             projectImage.style.display = 'block';
+            projectTitle.style.display = 'block';
         });
 
         projectImageLink.addEventListener('mouseout', () => {
             projectImage.style.display = 'none';
+            projectTitle.style.display = 'none';
         });
 
         // From library example
@@ -253,7 +262,7 @@ function displayDateSort(dateSortedProjects) {
         projectImage.classList.add("projectListImageTimeline"); // Add a class to the image to assist with CSS styling
 
         const projectTitle = document.createElement('div');
-        projectTitle.innerHTML = currProject.title + "<br/><br/>" + convertDateToLegibleString(currProject.date);
+        projectTitle.innerHTML = currProject.title;// + "<br/><br/>" + convertDateToLegibleString(currProject.date);
         projectTitle.classList.add("timelineProjectItemsHoverTitle")
 
         // projectListElement.appendChild(projectImageLink); // Add link to the project list HTML
@@ -274,8 +283,12 @@ function displayDateSort(dateSortedProjects) {
             projectImage.style.opacity = '1';
         });
 
+        const projectDate = document.createElement('div');
+        projectDate.innerHTML = convertDateToLegibleString(currProject.date);
+
         // Create the timeline structure expected by the library
         timelineContentElement.appendChild(projectImageLink);
+        timelineContentElement.appendChild(projectDate)
         timelineItemElement.appendChild(timelineContentElement);
         timelineItemsElement.appendChild(timelineItemElement);
 
@@ -366,7 +379,6 @@ if (localStorage.getItem('selectedSection') != null) {
 } else {
     console.log("EMPTY");
 }
-
 
 function retrieveFromLocalStorage() {
     const testString = localStorage.getItem('selectedSection');

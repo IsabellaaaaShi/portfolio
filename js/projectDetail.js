@@ -19,7 +19,6 @@ function updateDetailPage(chosenProject) {
     const infoElement = document.querySelector("#projectDescription"); // Create the info element by selecting unique ID
     infoElement.innerHTML = projects[chosenProject]["info"]; // Access info and set HTML with it
 
-
     const typeElement = document.querySelector("#projectInfoBoxType");
     typeElement.innerText = projects[chosenProject]["type"];
 
