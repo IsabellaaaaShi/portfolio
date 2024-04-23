@@ -16,14 +16,49 @@
     <script defer src="js/projectData.js"></script>
     <script defer src="js/projectDetail.js"></script>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Latin&family=Birthstone+Bounce">
 
   </head>
 
   <!-- Outline Page for Individual Project (details, images, videso, etc.) -->
-  <body>
+  <body class="projectPageBody">
 
-    <header id = "projectDetailHeader"></header>
+    <!-- Header of the Webpage. Includes title and navigation-->
+    <header class="sticky">
+  
+      <!-- Set the title of the webpage-->
+      <a class="headerTitle" href = "./index.html">
+        PORTFOLIO
+      </div>
+
+      <!-- Navigation Bar including "About Me", "My Work", "Resume", and "Contact" Sections-->
+      <nav>
+        <div>
+          <a class =  "navStyle navGap" href = "./index.html#top" onclick = updateHeaderText(this)>About Me</a>
+        </div>
+
+        <div>
+          <a class =  "navStyle navGap" href = "index.html#myWork" onclick = updateHeaderText(this)>My Work</a>
+        </div>
+
+        <div>
+          <a class =  "navStyle navGap" href = "./assets/YaoranShi_Resume.pdf" target="_blank" onclick = updateHeaderText(this)>Resume</a>
+        </div>
+
+        <div>
+          <a class = "navStyle" href = "index.html#contactInfo" onclick = updateHeaderText(this)>Contact</a>
+        </div>
+
+      </nav>
+
+    </header>
+
+    <h1 id = "projectDetailHeader"></h1>
+    <div id = "projectInfoBox">
+      <div id = "projectInfoBoxType"></div>
+      <div id = "projectInfoBoxLocation"></div>
+      <div id = "projectInfoBoxDate"></div>
+    </div>
     <p id = "projectDescription"></p>
     <div id = "projectDetailImages"></div>
 

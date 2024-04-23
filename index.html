@@ -12,42 +12,49 @@
     <!-- Links (1) CSS (2) JS (3) External Libraries, Fonts, Etc.-->
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- Timeline Library -->
+    <script src="/dist/js/timeline.min.js"></script>
+    <link href="/dist/css/timeline.min.css" rel="stylesheet" />
+
+    <script src="//unpkg.com/globe.gl"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
     <script defer src="js/projectData.js"></script>
     <script defer src="js/script.js"></script>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Latin&family=Birthstone+Bounce">
+
   </head>
 
   <!-- Main Page of My Portfolio Website-->
-  <body>
+  <body class = "homePageBody" id="myPortfolio">
 
     <!-- Header of the Webpage. Includes title and navigation-->
-    <header>
+    <header class="sticky">
       
       <!-- Set the title of the webpage-->
-      <div class="headerTitle">
+      <a class="headerTitle" href = "./index.html">
         PORTFOLIO
       </div>
 
       <!-- Navigation Bar including "About Me", "My Work", "Resume", and "Contact" Sections-->
       <nav>
-
         <div>
-          <a class =  "navCurrPage navGap" href = "index.html#aboutMe">About Me</a>
+          <a id = "aboutMeID" class =  "navStyle navGap" href = "#top" onclick = updateHeaderText(this)>About Me</a>
         </div>
 
         <div>
-          <a class =  "navGap" href = "index.html#myWork">My Work</a>
+          <a id = "myWorkID" class =  "navStyle navGap" href = "#myWork" onclick = updateHeaderText(this)>My Work</a>
         </div>
 
         <div>
-          <a class =  "navGap" href = "index.html#resume">Resume</a>
+          <a id = "resumeID" class =  "navStyle navGap" href = "./assets/YaoranShi_Resume.pdf" target="_blank" onclick = updateHeaderText(this)>Resume</a>
         </div>
 
         <div>
-          <a href = "index.html#contactInfo">Contact</a>
+          <a id = "contactID" class = "navStyle" href = "#contactInfo" onclick = updateHeaderText(this)>Contact</a>
         </div>
-
       </nav>
 
     </header>
@@ -76,12 +83,11 @@
         <!-- Include a link to the contact me section of the website-->
         <a href = "index.html#contactInfo" class = "aboutMeContactLink">Contact Me</a>
 
-
       </div>
 
       <!-- Include a personal photo for the intro section-->
       <div class = "aboutMePhoto">
-        <img class = "aboutMePhoto" src = "./assets/headshot.png"/>
+        <img class = "aboutMePhoto" src = "./assets/headshot.png" alt = "headshot of portoflio owner Isabella Shi"/>
       </div>
 
     </section>
@@ -109,24 +115,8 @@
       </div>
 
       <!-- Project List where projects are dynamically added based on button clicks above-->
-      <div id = "projectList">
-      </div>
+      <div id = "projectList"></div>
     
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume">
-
-      <!-- Include Title for the Resume Section-->
-      <div class = "sectionTitle">
-        Resume
-      </div>
-
-      <!-- Include Resume as an Image for Consistency across Mediums -->
-      <div>
-        <img class = "resumePhoto" src = "./assets/resumeImage.jpg"/>
-      </div>
-
     </section>
 
     <!-- Contact Section -->
@@ -138,31 +128,28 @@
       </div>
 
       <!-- Contact Me Button: Email-->
+      <!-- How to use mailto: https://www.w3schools.com/html/html_links.asp -->
       <div class = "contactButtonContainer">
-        <a href="https://www.gmail.com" target="_blank">
+        <a href="mailto:yaorans@andrew.cmu.edu" target="_blank">
           <img src="./assets/mailIcon.png" alt="Access email external site clickable">
         </a>
       </div>
 
       <!-- Contact Me Button: Linkedin-->
       <div class = "contactButtonContainer">        
-        <a href="https://www.linkedin.com" target="_blank">
+        <a href="https://www.linkedin.com/in/isabella-yaoran-shi-677899269/" target="_blank">
           <img src="./assets/linkedinIcon.png" alt="Access linkedin external site clickable">
         </a>
       </div>
 
-      <!-- Contact Me Button: Twitter-->
+      <!-- Contact Me Button: Github-->
       <div class = "contactButtonContainer">        
-        <a href="https://www.twitter.com" target="_blank">
-          <img src="./assets/twitterIcon.png" alt="Access twitter external site clickable">
+        <a href="https://github.com/IsabellaaaaShi" target="_blank">
+          <img src="./assets/githubIcon.png" alt="Access twitter external site clickable">
         </a>
       </div>
 
-      <!-- Contact Me Button: Instagram-->
-      <div class = "contactButtonContainer">
-        <a href="https://www.instagram.com" target="_blank">
-          <img src="./assets/instagramIcon.png" alt="Access instagram external site clickable">
-        </a>
-      </div>
-    
     </section>
+
+  </body>
+</html>

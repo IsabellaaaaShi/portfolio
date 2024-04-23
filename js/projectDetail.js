@@ -19,6 +19,16 @@ function updateDetailPage(chosenProject) {
     const infoElement = document.querySelector("#projectDescription"); // Create the info element by selecting unique ID
     infoElement.innerHTML = projects[chosenProject]["info"]; // Access info and set HTML with it
 
+
+    const typeElement = document.querySelector("#projectInfoBoxType");
+    typeElement.innerText = projects[chosenProject]["type"];
+
+    const locationElement = document.querySelector("#projectInfoBoxLocation");
+    locationElement.innerHTML = projects[chosenProject]["location"];
+
+    const dateElement = document.querySelector("#projectInfoBoxDate");
+    dateElement.innerHTML = convertDateToLegibleString(projects[chosenProject]["date"]);
+
     // Select and Clear the image container, so it is ready to populate with all project images
     projectImageContainer = document.getElementById("projectDetailImages"); // Access the image container element using unique ID
     projectImageContainer.innerHTML = ''; // Clear the container for new instance of the page
@@ -33,7 +43,14 @@ function updateDetailPage(chosenProject) {
       let twoSplitFlag = false; // Flag to track images splitting page into two. Set from true to false for second image, set from false to true on first of set
 
       // Iterate through each file in the list of expected media files
-      projects[chosenProject]["projectImages"].forEach((imgLnk) => {
+      projects[chosenProject]["projectImages"].forEach((imgObject) => {
+
+        console.log(imgObject);
+        const imgLnk = imgObject.fileName;
+        const altText = imgObject.altText;
+
+        console.log(altText);
+        console.log(imgLnk);
 
         // If the flag indicates that this file is the second of a set of two intented to split the row, skip and update flag.
         // Skip second of set of two becuase both are displayed when the first is encountered
@@ -57,6 +74,7 @@ function updateDetailPage(chosenProject) {
 
           // Call the function that breaks down the image filename into each component: project title, media type, content number, display type
           let parsedLink = parseLink(imgLnk);
+          console.log(parsedLink);
 
           // Check the current link and its display type (splitType), if it is "f" then the image is displayed with the full width
           if(parsedLink["splitType"] == "f") {
@@ -64,14 +82,30 @@ function updateDetailPage(chosenProject) {
             // Create new div to hold the image
             const fullImageDiv = document.createElement('div'); // Create the element
 
-            // Create an image element to add to the document
-            const genImage = document.createElement('img'); // Create the element
-            genImage.id = parsedLink["project"] + parsedLink["mediaType"] + parsedLink["index"]; // Give the image element an id
-            genImage.src = projects[chosenProject]["imageFileDirectory"] + "/" + imgLnk; // Set the image source link
-            genImage.classList.add("projectImageStyle", "projectImageFull"); // Add classes to the images, to assist in CSS styling
+            if (parsedLink["mediaType"] == "vid") {
+              // Create a video element to add to the document
+              const genVideo = document.createElement('video'); // Create the element
+              genVideo.id = parsedLink["project"] + parsedLink["mediaType"] + parsedLink["index"]; // Give the image element an id
+              genVideo.src = projects[chosenProject]["imageFileDirectory"] + "/" + imgLnk; // Set the image source link
+              genVideo.alt = altText;
+              genVideo.classList.add("projectImageStyle", "projectVideoFull"); // Add classes to the images, to assist in CSS styling
+              genVideo.setAttribute("controls","controls");
 
-            // Add image to the existing div
-            fullImageDiv.appendChild(genImage);
+              // Add video to the existing div
+              fullImageDiv.appendChild(genVideo);
+
+            } else if (parsedLink["mediaType"] == "img") {
+              // Create an image element to add to the document
+              const genImage = document.createElement('img'); // Create the element
+              genImage.id = parsedLink["project"] + parsedLink["mediaType"] + parsedLink["index"]; // Give the image element an id
+              genImage.src = projects[chosenProject]["imageFileDirectory"] + "/" + imgLnk; // Set the image source link
+              genImage.alt = altText;
+              genImage.classList.add("projectImageStyle", "projectImageFull"); // Add classes to the images, to assist in CSS styling
+
+              // Add image to the existing div
+              fullImageDiv.appendChild(genImage);
+            }
+
             projectImageContainer.appendChild(fullImageDiv); // Add the full image container to the page
 
           // Check the current link and its display type (splitType), if it is "s" then the next two images are split across the width of the page, with same height
@@ -92,14 +126,18 @@ function updateDetailPage(chosenProject) {
               const genImage1 = document.createElement('img'); // Create the element
               genImage1.id = parsedLink["project"] + parsedLink["mediaType"] + parsedLink["index"]; // Give the image element an id
               genImage1.src = projects[chosenProject]["imageFileDirectory"] + "/" + imgLnk; // Set the image source link
+              genImage1.alt = altText;
               genImage1.classList.add("projectImageStyle", "projectImageSplit"); // Add clases to the images, to assist in CSS styling
 
               // Create the second image element to add to the document
-              nextIndex = projects[chosenProject]["projectImages"].indexOf(imgLnk) + 1; // Get the next image link in the array, will be skipped in the forEach loop
-              let parsedLink2 = parseLink(projects[chosenProject]["projectImages"][nextIndex]); // Obtain the image attributes by parsing the filename using the parseLink function
+              nextIndex = projects[chosenProject]["projectImages"].indexOf(imgObject) + 1; // Get the next image link in the array, will be skipped in the forEach loop
+
+              let parsedLink2 = parseLink(projects[chosenProject]["projectImages"][nextIndex].fileName); // Obtain the image attributes by parsing the filename using the parseLink function
+
               const genImage2 = document.createElement('img'); // Create the element
               genImage2.id = parsedLink2["project"] + parsedLink2["mediaType"] + parsedLink2["index"]; // Give the image element an id
-              genImage2.src = projects[chosenProject]["imageFileDirectory"] + "/" + projects[chosenProject]["projectImages"][nextIndex]; // Set the image source link
+              genImage2.src = projects[chosenProject]["imageFileDirectory"] + "/" + projects[chosenProject]["projectImages"][nextIndex].fileName; // Set the image source link
+              genImage2.alt = projects[chosenProject]["projectImages"][nextIndex].altText; 
               genImage2.classList.add("projectImageStyle", "projectImageSplit"); // Add classes to the images, to assist in CSS styling
 
 
@@ -128,22 +166,25 @@ function updateDetailPage(chosenProject) {
               const genImage1 = document.createElement('img'); // Create the element
               genImage1.id = parsedLink["project"] + parsedLink["mediaType"] + parsedLink["index"]; // Give the image element an id
               genImage1.src = projects[chosenProject]["imageFileDirectory"] + "/" + imgLnk; // Set the image source link
+              genImage1.alt = altText;
               genImage1.classList.add("projectImageStyle", "projectImageThird"); // Add classes to the images, to assist in CSS styling
 
               // Create the second image element to add to the document
-              nextIndex = projects[chosenProject]["projectImages"].indexOf(imgLnk) + 1; // Get the next image link in the array, will be skipped in the forEach loop
-              let parsedLink2 = parseLink(projects[chosenProject]["projectImages"][nextIndex]); // Obtain the image attributes by parsing the filename using the parseLink function
+              nextIndex = projects[chosenProject]["projectImages"].indexOf(imgObject) + 1; // Get the next image link in the array, will be skipped in the forEach loop
+              let parsedLink2 = parseLink(projects[chosenProject]["projectImages"][nextIndex].fileName); // Obtain the image attributes by parsing the filename using the parseLink function
               const genImage2 = document.createElement('img'); // Create the element
               genImage2.id = parsedLink2["project"] + parsedLink2["mediaType"] + parsedLink2["index"]; // Give the image element an id
-              genImage2.src = projects[chosenProject]["imageFileDirectory"] + "/" + projects[chosenProject]["projectImages"][nextIndex]; // Set the image source link
+              genImage2.src = projects[chosenProject]["imageFileDirectory"] + "/" + projects[chosenProject]["projectImages"][nextIndex].fileName; // Set the image source link
+              genImage2.alt = projects[chosenProject]["projectImages"][nextIndex].altText;
               genImage2.classList.add("projectImageStyle", "projectImageThird"); // Add classes to the images, to assist in CSS styling
 
               // Create the third image element to add to the document
               nextIndex++; // Get the next image link in the array, will be skipped in the forEach loop
-              let parsedLink3 = parseLink(projects[chosenProject]["projectImages"][nextIndex]); // Obtain the image attributes by parsing the filename using the parseLink function
+              let parsedLink3 = parseLink(projects[chosenProject]["projectImages"][nextIndex].fileName); // Obtain the image attributes by parsing the filename using the parseLink function
               const genImage3 = document.createElement('img'); // Create the element
               genImage3.id = parsedLink3["project"] + parsedLink3["mediaType"] + parsedLink3["index"]; // Give the image element an id
-              genImage3.src = projects[chosenProject]["imageFileDirectory"] + "/" + projects[chosenProject]["projectImages"][nextIndex]; // Set the image source link
+              genImage3.src = projects[chosenProject]["imageFileDirectory"] + "/" + projects[chosenProject]["projectImages"][nextIndex].fileName; // Set the image source link
+              genImage3.alt = projects[chosenProject]["projectImages"][nextIndex].altText;
               genImage3.classList.add("projectImageStyle", "projectImageThird"); // Add classes to the images, to assist in CSS styling
 
               splitImageDiv.appendChild(genImage1); // Add the first image to the image container
@@ -170,10 +211,10 @@ function updateDetailPage(chosenProject) {
 }
 
 // Image filenames have the format [project title]_[media type]_[index]_[display type].[extension]. Parse this information
-function parseLink(imgLink) {
+function parseLink(imgFilename) {
 
   // Split the image link based on delimiters
-  imgLnkArray = imgLink.split("_");
+  imgLnkArray = imgFilename.split("_");
   imgSplitExt = imgLnkArray[imgLnkArray.length-1].split("."); // Split [display type].[extension] based on "." delimiter
   
   return {
@@ -183,4 +224,42 @@ function parseLink(imgLink) {
     "splitType": imgSplitExt[0], // Fourth element is the display method ("full", "split", "third")
     "extension": imgSplitExt[1] // Fifth and final element is the file extension (.png, .jpg, .mp4, etc. )
   }
+}
+
+// Create a function that will update the styling of navigation bar links. Selected section will become underlined and bolded
+function updateHeaderText(headerElement) {
+  /*
+      // Obtain all navigation bar elements that currently are selected as the current page (should only be one element)
+      otherHeaderElements = document.querySelectorAll(".navCurrPage");
+  
+      // Remove the current page CSS style (.navCurrPage) for all headers
+      otherHeaderElements.forEach(eachElement => {
+          eachElement.classList.remove("navCurrPage");
+      })
+  
+      // Add the current page navigation bar styling to the element that was clicked and triggered this function
+      headerElement.classList.add("navCurrPage"); */
+
+      localStorage.setItem('selectedSection', "TEST");
+      console.log(localStorage.getItem('storedCart')); 
+  }
+  
+
+function convertDateToLegibleString(inputString) {
+
+  stringArray = inputString.split("_"); 
+  returnString = "";
+
+  if (stringArray.length == 1) {
+    returnString = inputString;
+  } else if (stringArray[1] == 1) {
+    returnString = "Spring " + stringArray[0];
+  } else if (stringArray[1] == 2) {
+    returnString = "Fall " + stringArray[0];
+  } else {
+    returnString = "Undated";
+  }
+
+  return returnString;
+
 }

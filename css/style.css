@@ -1,27 +1,59 @@
 /* Portfolio Style Guide
 
 ---- COLOR DEFINITION ----
-Portfolio Blue: #1C19C2
-Portfolio Orange: #FFA620
-Portfolio Background: #FBF8F8
+Portfolio Blue*:         #1C19C2
+Portfolio Orange:       #FFA620
+Portfolio Background*:   #FBF8F8
+*Matches resume and portfolio colors
 
 ---- FONT DEFINITION -----
+Portfolio Text:         Anek Latin
+Cursive Text:           Birthstone Bounce
 
 */
 
+/*
+.navStyle:hover {
+    font-size: 20px;
+    /* bolder text: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight 
+    font-weight: 800;
+    color: black;
+    text-decoration: underline 5px;
+} */
 
 /*----------------------------------------------------------------------------------------
 GENERAL PAGE
 ----------------------------------------------------------------------------------------*/
 
 /* Define a style for the main page including color, margins, fonts, etc. */
+
+/* Avoid purple links after they have been clicked */
+/* https://stackoverflow.com/questions/4383460/dont-change-link-color-when-a-link-is-clicked */
+a {
+    color: inherit;
+}
+
+/* Provide default style rules for the entire site: font, background, margins, centering */
 body {
     font-family: "Anek Latin", sans-serif;
     background-color: #FBF8F8;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Set margins for the home page, different from project page to accomodate sticky nav bar */
+.homePageBody {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* Set margins for the project detail page, different from home page to accomodate sticky nav bar */
+.projectPageBody {
+    margin-top: 0px;
+    margin-bottom: 50px;
 }
 
 /*----------------------------------------------------------------------------------------
@@ -33,6 +65,10 @@ header {
     display: flex; 
     flex-direction: row;
     margin-bottom: 60px;
+    overflow: hidden;
+    height: 100px;
+    align-items: center;
+    background-color: #FBF8F8;
 }
 
 /* Set style for page header (top left of page) */
@@ -41,6 +77,15 @@ header {
     flex-basis: auto;
     margin: auto 0;
     font: 400 30px sans-serif;
+    text-decoration: none;
+}
+
+/* From sticky navbar tutorial: https://stackoverflow.com/questions/57910573/fix-jump-when-creating-sticky-scroll-navbar */
+.sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100; /* Ensure the sticky navbar is always on top by changin its z-index to a high number */
 }
 
 /*----------------------------------------------------------------------------------------
@@ -68,7 +113,7 @@ nav a {
 }
 
 /* Bold and underline the current navigation link selection */
-.navCurrPage {
+.navStyle:hover {
     font-size: 20px;
     /* bolder text: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */
     font-weight: 800;
@@ -90,6 +135,13 @@ MAIN PAGE SECTIONS
     color: #1C19C2;
     font-weight: 800;
     font-size: 80px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Set the sections to take up 100% of the width of their parent (body which has page width of 80%) */
+section {
+    width: 100%;
 }
 
 /*----------------------------------------------------------------------------------------
@@ -107,14 +159,14 @@ ABOUT ME SECTION
 .aboutMeInfo {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 /* Set style for about me section header text */
 .aboutMeText {
     color: #1C19C2;
     font-weight: 800;
-    font-size: 80px;
+    font-size: 120px;
     margin-top: -30px;
     margin-left: 15px;
 }
@@ -122,7 +174,7 @@ ABOUT ME SECTION
 /* Set style for offset, super-script text included in the about me section header */
 #aboutMeSuperscript {
     font-family: "Birthstone Bounce", cursive;
-    font-size: 50px; 
+    font-size: 80px; 
     font-weight: 500;
     text-align: center;
     /* text center: https://stackoverflow.com/questions/4801181/vertically-and-horizontally-centering-text-in-circle-in-css-like-iphone-notific */
@@ -137,7 +189,8 @@ ABOUT ME SECTION
 .aboutMePara {
     margin-top: 15px;
     margin-bottom: 15px;
-    word-break: break-all;
+    font-size: 24px;  
+    text-align: justify;
 }
 
 /* Set style for about me section contact link button */
@@ -150,12 +203,12 @@ ABOUT ME SECTION
     border: 1px solid black;
     text-decoration: none;
     border-radius: 20px;
-    align-self: center;
+    width: 80px;
+    text-align: center;
     font-weight: 800;
     /* Drop shadow: figma */
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-
 
 /* Set Style for the about me section headshot photo */
 .aboutMePhoto {
@@ -168,12 +221,22 @@ ABOUT ME SECTION
 MY WORK SECTION
 ----------------------------------------------------------------------------------------*/
 
+/* Set a margin on the top of the "My Work" page section */
+#myWork {
+    margin-top: 100px;
+}
+
 /* Set the flex-box for the work display selection types: row */
 .workDisplaySelect {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: baseline;
+}
+
+/* Ensure the projects take up 100% of the section width (80% of page) */
+#projectList {
+    width: 100%;
 }
 
 /* Set a style for the sort method buttons */
@@ -198,21 +261,85 @@ MY WORK SECTION
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
 
-/* Set style for the project listing images in the "My Work" section (project icons) */
-.projectListImage {
-    padding: 25px;
-
+/* Style headers for each of the project types when sorted by type */
+.typeSortHeader {
+    font-size: 24px;
+    color: #1C19C2;
+    margin-top: 50px;
+    font-weight: bold;
 }
 
-/*----------------------------------------------------------------------------------------
-RESUME SECTION
-----------------------------------------------------------------------------------------*/
+/* Set style for the project listing images (by type) in the "My Work" section (project icons) */
+.projectListImage {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 200px;
+    width: 200px;
+}
 
-/* Set the style for the resume image */
-.resumePhoto {
-    width: 900px; 
-    margin-left: 50px;
-    margin-right: 50px;
+/* Set a hover style for the project listing image (by type) s in the "My Work" section */
+.projectListImage:hover {
+    transform: scale(1.2);
+    opacity: 0.6;
+}
+
+/* Set style for the project listing images (by date) in the "My Work" section (project icons) */
+.projectListImageTimeline {
+    padding: 0px;
+    margin: 0px;
+    height: 150px;
+    width: 150px;
+}
+
+/* Set a hover style for the project listing image (by date) s in the "My Work" section */
+.timelineProjectItemsHoverTitle {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+/* Center the contents of the timeline points */
+.timeline__item {
+    text-align: center;
+}
+
+/* Style a div so that the globe is in the middle of the page */
+.centerMapDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Style a div to look like a dot that can be placed on the globe (location sort) */
+.projectDot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Set style for the project listing images (by location) in the "My Work" section (project icons) */
+.projectListImageMap {
+    position: absolute;
+    display: none;
+    width: 200px;
+    height: 200px;
+    top: -200px;
+    border-radius: 10px;
 }
 
 /*----------------------------------------------------------------------------------------
@@ -225,6 +352,7 @@ CONTACT SECTION
     flex-direction: row;
     justify-content: flex-start;
     align-items: baseline;
+    margin-top: 100px;
 }
 
 /* Set the style of the contact info section title */
@@ -247,6 +375,59 @@ PROJECT DETAIL PAGE
 HEADER
 ----------------------------------------------------------------------------------------*/
 
+/* Style the project detail page header: project name */
+#projectDetailHeader {
+    color: #1C19C2;
+    font-weight: 800;
+    font-size: 80px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Style the project detail page info: box describing project attributes */
+#projectInfoBox {
+    width: 100%;
+    border-top: 3px black solid;
+    border-bottom: 3px black solid;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style the project detail page info box "project type" section */
+#projectInfoBoxType {
+    font-size: 24px;
+    width: 150px;
+    text-align: left;
+}
+
+/* Style the project detail page info box "project location" section */
+
+#projectInfoBoxLocation {
+    font-size: 24px;
+    width: 150px;
+    text-align: center;
+}
+
+/* Style the project detail page info box "project date" section */
+#projectInfoBoxDate {
+    font-size: 24px;
+    width: 150px;
+    text-align: right;
+}
+
+/* Style the project detail page project description */
+#projectDescription {
+    font-size: 18px;
+    text-align: justify;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 /*----------------------------------------------------------------------------------------
 CONTENT
 ----------------------------------------------------------------------------------------*/
@@ -256,43 +437,48 @@ CONTENT
     margin: 10px;
 }
 
+/* Style flex-box container to hold project images */
 #projectDetailImages {
-    background-color: gray;
     display: flex;
     flex-direction: column;
     justify-content: baseline;
     align-items: center;
-    max-width: 90%;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
+/* Style flex-box containers to hold project image of the same set (set of 1, set of 2, set of 3 */
 #projectDetailImages div {
-    background-color: orange;
     margin: 10px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-
 }
 
+/* style individual project images */
 #projectDetailImages div img{
-    background-color: violet;
     margin: 5px;
-    border: 5px solid violet;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+/* Style individual project videos */
+#projectDetailImages div video{
+    margin: 5px;
     object-fit: contain;
     overflow: hidden;
     width: auto; 
 }
 
+/* Ensure images in their own set take up full 100% width of container */
 .projectImageFull {
-    border: 5px solid red;
+    width: 100%;
 }
 
-.projectImageThird {
-    border: 5px solid green;
-}
-
-.projectImageSplit {
-    border: 5px solid blue;
+/* Ensure videos take up full 100% width of container (videos never share a row)*/
+.projectVideoFull {
+    width: 100%;
 }
