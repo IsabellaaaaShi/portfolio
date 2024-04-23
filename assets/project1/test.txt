@@ -1,3 +1,0 @@
-This is my test text file for reading project info into the page. Exciting!!!
-
-If you're reading this --- I love you!!!! <3
