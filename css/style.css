@@ -42,18 +42,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-/* Set margins for the home page, different from project page to accomodate sticky nav bar */
-.homePageBody {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-/* Set margins for the project detail page, different from home page to accomodate sticky nav bar */
-.projectPageBody {
-    margin-top: 0px;
-    margin-bottom: 50px;
+    margin-top: 0%;
+    margin-bottom: 3%;
 }
 
 /*----------------------------------------------------------------------------------------
@@ -64,7 +54,6 @@ HEADER
 header {
     display: flex; 
     flex-direction: row;
-    margin-bottom: 60px;
     overflow: hidden;
     height: 100px;
     align-items: center;
@@ -84,7 +73,7 @@ header {
 .sticky {
     position: sticky;
     top: 0;
-    width: 100%;
+    width: 101%;
     z-index: 100; /* Ensure the sticky navbar is always on top by changin its z-index to a high number */
 }
 
@@ -135,8 +124,8 @@ MAIN PAGE SECTIONS
     color: #1C19C2;
     font-weight: 800;
     font-size: 80px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
 
 /* Set the sections to take up 100% of the width of their parent (body which has page width of 80%) */
@@ -153,6 +142,9 @@ ABOUT ME SECTION
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 100%;
+    margin-top: 4%;
+    margin-bottom: 6%;
 }
 
 /* Set sub flex-box for the first item of the #aboutMe flex-box: Title; Paragraph; Content Link */
@@ -160,6 +152,8 @@ ABOUT ME SECTION
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    width: 45%;
+    margin-right:5%
 }
 
 /* Set style for about me section header text */
@@ -194,8 +188,8 @@ ABOUT ME SECTION
 }
 
 .aboutMeTitle {
-    margin-top: 30px;
-    margin-bottom: 60px;
+    margin-top: 3%;
+    margin-bottom: 4%;
 }
 
 /* Set style for about me section contact link button */
@@ -215,11 +209,16 @@ ABOUT ME SECTION
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-/* Set Style for the about me section headshot photo */
+/* Set style for the image container, including aligning the image in the center */
+.aboutMePhotoContainer {
+    width: 45%;
+    margin-left: 5%;
+    text-align: center;
+}
+
+/* Set Style for the about me section headshot photo (full width of container) */
 .aboutMePhoto {
-    width: 600px; 
-    margin-left: 50px;
-    margin-right: 50px;
+    width: 100%; 
 }
 
 /*----------------------------------------------------------------------------------------
@@ -228,7 +227,8 @@ MY WORK SECTION
 
 /* Set a margin on the top of the "My Work" page section */
 #myWork {
-    margin-top: 100px;
+    margin-top: 2%;
+    scroll-margin-top: 80px;
 }
 
 /* Set the flex-box for the work display selection types: row */
@@ -242,8 +242,40 @@ MY WORK SECTION
 /* Ensure the projects take up 100% of the section width (80% of page) */
 #projectList {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 2%;
 }
+
+/* Set up a grid to place the images once sorted by type (3 columns) */
+.sortedListElement {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 2%;
+}
+
+/* In the grid, images and text should be centered, image aspect ratio should be square */
+.centerImagesInGrid {
+    aspect-ratio: 1;
+    position: relative;
+    text-align: center;
+}
+
+/* Add title that will appear on hover to the project type sort gallery */
+.projectListTitleTypeSort {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    text-decoration: none;
+    color: black;
+    font-size: 2vw; /*Change font size based on screen width: https://www.geeksforgeeks.org/font-scaling-based-on-width-of-container-using-css/ */
+    font-weight: 800;
+}
+
+/*-----------------------------------------------------------------------------------------------*/
 
 /* Set a style for the sort method buttons */
 .sortButton {
@@ -271,7 +303,7 @@ MY WORK SECTION
 .typeSortHeader {
     font-size: 36px;
     color: #1C19C2;
-    margin-top: 50px;
+    margin-top: 5%;
     font-weight: bold;
 }
 
@@ -281,14 +313,9 @@ MY WORK SECTION
     padding-bottom: 2.5%;
     padding-left: 2.5%;
     padding-right: 2.5%;
-    height: 20%;
-    width: 20%;
-}
-
-/* Set a hover style for the project listing image (by type) s in the "My Work" section */
-.projectListImage:hover {
-    transform: scale(1.2);
-    opacity: 0.6;
+    height: 70%;
+    width: 70%;
+    border-radius: 15%;
 }
 
 /* Set style for the project listing images (by date) in the "My Work" section (project icons) */
@@ -297,10 +324,11 @@ MY WORK SECTION
     margin: 0px;
     height: 150px;
     width: 150px;
+    border-radius: 10%;
 }
 
 /* Set a hover style for the project listing image (by date) s in the "My Work" section */
-.timelineProjectItemsHoverTitle {
+.timelineProjectItemsHoverTitleTopRow {
     position: absolute;
     top: 30%;
     left: 0;
@@ -315,6 +343,36 @@ MY WORK SECTION
     font-weight: 800;
 }
 
+/* Set a hover style for the project listing image (by date) s in the "My Work" section */
+.timelineProjectItemsHoverTitleBottomRow {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+/* Add padding and styling to the timeline dates when on bottom of image (top row of images) */
+.timelineDateTextTopRow {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #1C19C2;
+}
+
+/* Add padding and styling to the timeline dates when on top of image (bottom row of images) */
+.timelineDateTextBottomRow {
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #1C19C2;
+}
+
 /* Center the contents of the timeline points */
 .timeline__item {
     text-align: center;
@@ -326,11 +384,11 @@ MY WORK SECTION
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 5%;
 }
 
 /* Style a div to look like a dot that can be placed on the globe (location sort) */
-.projectDot {
+.projectMarker {
     /*position: absolute; */
     width: 30px;
     height: 30px;
@@ -346,7 +404,7 @@ MY WORK SECTION
     width: 200px;
     height: 200px;
     top: -200px;
-    border-radius: 10px;
+    border-radius: 10%;
     opacity: 0.5;
 }
 
@@ -377,19 +435,20 @@ CONTACT SECTION
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 10%;
 }
 
 /* Set the style of the contact info section title */
 #contactInfo .sectionTitle {
-    margin-right: 100px;
+    margin-right: 10%;
 }
 
 /* Set the style of the contact me link icons */
 .contactButtonContainer img {
     height: 50px;
     width: 50px;
-    margin: 5px;
+    margin-right: 30px;
+    padding-top: 20px;
 }
 
 /*----------------------------------------------------------------------------------------
@@ -405,8 +464,9 @@ HEADER
     color: #1C19C2;
     font-weight: 800;
     font-size: 80px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
 }
 
 /* Style the project detail page info: box describing project attributes */
@@ -448,9 +508,8 @@ HEADER
 /* Style the project detail page project description */
 #projectDescription {
     font-size: 18px;
-    text-align: justify;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 2%;
+    margin-bottom: 2%;
     line-height: 150%;
     width: 80%;
 }

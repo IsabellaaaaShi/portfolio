@@ -10,17 +10,19 @@
     <!-- Webpage Setup-->
     <meta charset="UTF-8">
 
-    <!-- Links (1) CSS (2) JS (3) External Libraries, Fonts, Etc.-->
+    <!-- Link CSS style for site-->
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- Javascript for portfolio project pages, and project detail data structure-->
     <script defer src="js/projectData.js"></script>
     <script defer src="js/projectDetail.js"></script>
 
+    <!-- Link to google api fonts (External)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Latin&family=Birthstone+Bounce">
 
   </head>
 
-  <!-- Outline Page for Individual Project (details, images, videso, etc.) -->
+  <!-- Outline Page for Individual Project (details, images, videos, etc.) -->
   <body class="projectPageBody">
 
     <!-- Header of the Webpage. Includes title and navigation-->
@@ -29,38 +31,27 @@
       <!-- Set the title of the webpage-->
       <a class="headerTitle" href = "./index.html">
         PORTFOLIO
-      </div>
+      </a>
 
       <!-- Navigation Bar including "About Me", "My Work", "Resume", and "Contact" Sections-->
       <nav>
-        <div>
-          <a class =  "navStyle navGap" href = "./index.html#top" onclick = updateHeaderText(this)>About Me</a>
-        </div>
-
-        <div>
-          <a class =  "navStyle navGap" href = "index.html#myWork" onclick = updateHeaderText(this)>My Work</a>
-        </div>
-
-        <div>
-          <a class =  "navStyle navGap" href = "./assets/YaoranShi_Resume.pdf" target="_blank" onclick = updateHeaderText(this)>Resume</a>
-        </div>
-
-        <div>
-          <a class = "navStyle" href = "index.html#contactInfo" onclick = updateHeaderText(this)>Contact</a>
-        </div>
-
+        <div><a class =  "navStyle navGap" href = "./index.html#top" onclick = updateHeaderText(this)>About Me</a></div>
+        <div><a class =  "navStyle navGap" href = "index.html#myWork" onclick = updateHeaderText(this)>My Work</a></div>
+        <div><a class =  "navStyle navGap" href = "./assets/YaoranShi_Resume.pdf" target="_blank" onclick = updateHeaderText(this)>Resume</a></div>
+        <div><a class = "navStyle" href = "index.html#contactInfo" onclick = updateHeaderText(this)>Contact</a></div>
       </nav>
 
     </header>
 
-    <h1 id = "projectDetailHeader"></h1>
-    <div id = "projectInfoBox">
-      <div id = "projectInfoBoxType"></div>
-      <div id = "projectInfoBoxLocation"></div>
-      <div id = "projectInfoBoxDate"></div>
+    <!-- Create the structure that will be populated with project information based on the URL param query-->
+    <h1 id = "projectDetailHeader"></h1> <!-- Header to display project title-->
+    <div id = "projectInfoBox"> <!-- Container to hold additional project attributes-->
+      <div id = "projectInfoBoxType"></div> <!-- List the project type-->
+      <div id = "projectInfoBoxLocation"></div> <!-- List the project location-->
+      <div id = "projectInfoBoxDate"></div> <!-- List the project date-->
     </div>
-    <p id = "projectDescription"></p>
-    <div id = "projectDetailImages"></div>
+    <p id = "projectDescription"></p> <!-- Paragraph element to contain project description text-->
+    <div id = "projectDetailImages"></div> <!-- container to hold project images, dynamically added from projectDetail.js-->
 
   </body>
   

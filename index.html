@@ -9,20 +9,23 @@
     <!-- Webpage Setup-->
     <meta charset="UTF-8">
 
-    <!-- Links (1) CSS (2) JS (3) External Libraries, Fonts, Etc.-->
+    <!-- Link CSS style for site-->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Timeline Library -->
+    <!-- Timeline Library (Local)-->
+    <!-- https://github.com/squarechip/timeline (MIT License)-->
     <script src="./dist/js/timeline.min.js"></script>
     <link href="./dist/css/timeline.min.css" rel="stylesheet" />
 
+    <!-- 3D Globe Library (External)-->
+    <!-- https://github.com/vasturiano/globe.gl (MIT License)-->
     <script src="//unpkg.com/globe.gl"></script>
 
-    <link rel="stylesheet" href="css/style.css">
-
+    <!-- Javascript for portfolio main page, and project detail data structure-->
     <script defer src="js/projectData.js"></script>
     <script defer src="js/script.js"></script>
 
+    <!-- Link to google api fonts (External)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Latin&family=Birthstone+Bounce">
 
   </head>
@@ -33,28 +36,17 @@
     <!-- Header of the Webpage. Includes title and navigation-->
     <header class="sticky">
       
-      <!-- Set the title of the webpage-->
+      <!-- Set the title of the webpage, make it link to top of main page-->
       <a class="headerTitle" href = "./index.html">
         PORTFOLIO
-      </div>
+      </a>
 
       <!-- Navigation Bar including "About Me", "My Work", "Resume", and "Contact" Sections-->
       <nav>
-        <div>
-          <a id = "aboutMeID" class =  "navStyle navGap" href = "#top" onclick = updateHeaderText(this)>About Me</a>
-        </div>
-
-        <div>
-          <a id = "myWorkID" class =  "navStyle navGap" href = "#myWork" onclick = updateHeaderText(this)>My Work</a>
-        </div>
-
-        <div>
-          <a id = "resumeID" class =  "navStyle navGap" href = "./assets/YaoranShi_Resume.pdf" target="_blank" onclick = updateHeaderText(this)>Resume</a>
-        </div>
-
-        <div>
-          <a id = "contactID" class = "navStyle" href = "#contactInfo" onclick = updateHeaderText(this)>Contact</a>
-        </div>
+        <div><a id = "aboutMeID" class =  "navStyle navGap" href = "#top" onclick = updateHeaderText(this)>About Me</a></div>
+        <div><a id = "myWorkID" class =  "navStyle navGap" href = "#myWork" onclick = updateHeaderText(this)>My Work</a></div>
+        <div><a id = "resumeID" class =  "navStyle navGap" href = "./assets/YaoranShi_Resume.pdf" target="_blank" onclick = updateHeaderText(this)>Resume</a></div>
+        <div><a id = "contactID" class = "navStyle" href = "#contactInfo" onclick = updateHeaderText(this)>Contact</a></div>
       </nav>
 
     </header>
@@ -63,7 +55,7 @@
     <section id="aboutMe">
       <div class = "aboutMeInfo">
         
-        <!-- Include the About Me section title (Name)-->
+        <!-- Include the About Me section title (my name)-->
         <div class = aboutMeTitle>
           <div id="aboutMeSuperscript">
             I'm
@@ -86,7 +78,7 @@
       </div>
 
       <!-- Include a personal photo for the intro section-->
-      <div class = "aboutMePhoto">
+      <div class = "aboutMePhotoContainer">
         <img class = "aboutMePhoto" src = "./assets/headshot.png" alt = "headshot of portoflio owner Isabella Shi"/>
       </div>
 
@@ -95,20 +87,25 @@
     <!-- My Work Section -->
     <section id="myWork">
 
+      <!-- Title the "My Work" section-->
       <div class = "sectionTitle">
         My Work
       </div>
 
+      <!-- Create a container for all project sorting features-->
       <div class = "workDisplaySelect">
         
+        <!-- First sorting type is by project type (categorized by architecture, hci, research)-->
         <button class = "sortButton selectedButton" onclick="makeSelection(this, 'type')"> 
           By Type 
         </button>
 
+        <!-- Next sorting type is by project location (located on 3d globe)-->
         <button class = "sortButton" onclick="makeSelection(this, 'location')"> 
           By Location 
         </button>
 
+        <!-- Last sorting type is by project date (placed on timeline from most recent to oldest)-->
         <button class = "sortButton" onclick="makeSelection(this, 'date')"> 
           By Date 
         </button>
