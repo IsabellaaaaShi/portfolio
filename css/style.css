@@ -12,15 +12,6 @@ Cursive Text:           Birthstone Bounce
 
 */
 
-/*
-.navStyle:hover {
-    font-size: 20px;
-    /* bolder text: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight 
-    font-weight: 800;
-    color: black;
-    text-decoration: underline 5px;
-} */
-
 /*----------------------------------------------------------------------------------------
 GENERAL PAGE
 ----------------------------------------------------------------------------------------*/
@@ -163,6 +154,7 @@ ABOUT ME SECTION
     font-size: 120px;
     margin-top: -30px;
     margin-left: 15px;
+    margin-bottom: 8%;
 }
 
 /* Set style for offset, super-script text included in the about me section header */
@@ -173,7 +165,7 @@ ABOUT ME SECTION
     text-align: center;
     /* text center: https://stackoverflow.com/questions/4801181/vertically-and-horizontally-centering-text-in-circle-in-css-like-iphone-notific */
     line-height: 30px;
-    color: #FFA620;
+    color: #D96D08;
     width: 20px;
     height: 30px; 
 
@@ -183,10 +175,10 @@ ABOUT ME SECTION
 .aboutMePara {
     margin-bottom: 40px;
     font-size: 24px;  
-    text-align: justify;
     line-height: 180%;
 }
 
+/* Set style for the about me title text box */
 .aboutMeTitle {
     margin-top: 3%;
     margin-bottom: 4%;
@@ -451,6 +443,11 @@ CONTACT SECTION
     padding-top: 20px;
 }
 
+/* Enlarge the contact buttons on hover */
+.contactButtonContainer img:hover {
+    transform: scale(1.2); /*https://www.w3schools.com/howto/howto_css_zoom_hover.asp*/
+}
+
 /*----------------------------------------------------------------------------------------
 PROJECT DETAIL PAGE
 ----------------------------------------------------------------------------------------*/
@@ -491,7 +488,6 @@ HEADER
 }
 
 /* Style the project detail page info box "project location" section */
-
 #projectInfoBoxLocation {
     font-size: 24px;
     width: 500px;

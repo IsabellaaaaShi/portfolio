@@ -257,32 +257,3 @@ function convertDateToLegibleString(inputString) {
 
   return returnString;
 }
-
-
-
-
-
-
-
-
-
-
-
-/*
-// Update the styling of navigation bar links. Selected section will become underlined and bolded
-function updateHeaderText(headerElement) {
-  /*
-      // Obtain all navigation bar elements that currently are selected as the current page (should only be one element)
-      otherHeaderElements = document.querySelectorAll(".navCurrPage");
-  
-      // Remove the current page CSS style (.navCurrPage) for all headers
-      otherHeaderElements.forEach(eachElement => {
-          eachElement.classList.remove("navCurrPage");
-      })
-  
-      // Add the current page navigation bar styling to the element that was clicked and triggered this function
-      headerElement.classList.add("navCurrPage"); 
-
-    localStorage.setItem('selectedSection', headerElement.id);
-    console.log(localStorage.getItem('storedCart')); 
-} */
